@@ -1,13 +1,15 @@
-import React from 'react'
-import Layout from "./hoc/Layout/Lauout"
-import './App.css'
+import React, {Component} from 'react'
+import Layout from './hoc/Layout/Lauout'
+import Datepicker from './container/Dateoicker/Datepicker'
 
-function App() {
-  return (
-    <Layout>
-
-    </Layout>
-  );
+class App extends Component {
+  render() {
+    return (
+        <Layout>
+          <Datepicker />
+        </Layout>
+    );
+  }
 }
 
 export default App

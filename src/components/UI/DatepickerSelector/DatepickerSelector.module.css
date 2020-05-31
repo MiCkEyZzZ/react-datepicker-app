@@ -1,0 +1,48 @@
+.DatepickerSelector {
+    display: block;
+    margin-top: 1em;
+    padding: 0;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.DatepickerSelector.active {
+    display: block;
+}
+
+.DatepickerSelectorTable {
+    width: 100%;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+.DatepickerSelectorTable tr {
+    border-bottom: 1px solid #eeeeee;
+    box-sizing: border-box;
+}
+
+.DatepickerSelectorTable tr:last-child {
+    border-bottom: none;
+}
+
+.DatepickerSelectorTable td {
+    padding: 1em;
+    /*border: 1px solid #eeeeee;*/
+    box-sizing: border-box;
+}
+
+/*.DatepickerSelectorTable td:last-child {*/
+/*    !*border-right: none;*!*/
+/*}*/
+
+.DatepickerSelectorTableHandler {}
+
+.DatepickerSelectorTableHeaderCurrantMonth {
+    text-align: center;
+}
+
+.DatepickerSelectorTableDayHeader tr {
+    padding: 0 1em 0 1em;
+}
