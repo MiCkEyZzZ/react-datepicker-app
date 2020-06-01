@@ -1,0 +1,16 @@
+.datepicker-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 150px;
+    font-size: 18px;
+    padding: 1em;
+    color: #000000;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+
+    &:hover {
+        border-color: #4691f6;
+    }
+}

@@ -1,0 +1,212 @@
+.datepicker-selector {
+    display: none;
+    margin-top: 1em;
+    padding: 0;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+
+    &.active {
+        display: block;
+
+    }
+
+    &__table {
+        width: 100%;
+        padding: 0;
+        border-collapse: collapse;
+        box-sizing: border-box;
+
+        tr {
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        td {
+            padding: 1em;
+            box-sizing: border-box;
+        }
+
+        &-days {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 54px;
+            border-radius: 50%;
+
+            &:hover {
+                background: lighten(#4691f6, 4%);
+            }
+
+            &, &not {
+                width: 54px;
+                cursor: pointer;
+            }
+
+            &not {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 54px;
+                border-radius: 50%;
+                color: #dddddd;
+
+                &:hover {
+                    background: #fdffdd;
+                }
+            }
+
+            &selected {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 54px;
+                background: #e3effe;
+                border-left: 0;
+                border-radius: 50%;
+                cursor: default;
+            }
+        }
+
+        &--wrapper {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        &--handler {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0;
+            padding: .5em;
+            border-bottom: 1px solid #eeeeee;
+
+            &-currant {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            &-arrow {
+                width: 95px;
+                margin: 0;
+                padding: 0;
+
+                &-pr,
+                &-nxt {
+                    position: relative;
+                    width: 40px;
+                    margin: 0;
+                    padding: 0;
+                    cursor: pointer;
+                }
+
+                &-pr::before {
+                    position: absolute;
+                    top: 15px;
+                    left: 12px;
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    margin-right: 0.1em;
+                    border-right: 0.1em solid #000000;
+                    border-top: 0.1em solid #000000;
+                    transform: rotate(135deg);
+                }
+
+                &-pr:hover::before {
+                    border-right: 0.1em solid #4691f6;
+                    border-top: 0.1em solid #4691f6;
+                }
+
+                &-nxt::before {
+                    position: absolute;
+                    top: 25px;
+                    left: 12px;
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    margin-right: 0.1em;
+                    border-right: 0.1em solid #000000;
+                    border-top: 0.1em solid #000000;
+                    transform: rotate(-45deg);
+                }
+
+                &-nxt:hover::before {
+                    border-right: 0.1em solid #4691f6;
+                    border-top: 0.1em solid #4691f6;
+                }
+            }
+
+            &-previous,
+            &-next {
+                display: block;
+                width: 1.2em;
+                height: 1.3em;
+                margin:  auto;
+                cursor: pointer;
+                path {fill: #000000}
+            }
+
+            &-icon {
+                width: 1.2em;
+                height: 1.3em;
+
+                path,
+                polygon,
+                rect {
+                    fill: #000000;
+                }
+
+                circle {
+                    stroke: #4691f6;
+                    stroke-width: 1;
+                }
+            }
+        }
+
+        &--week {
+            display: flex;
+            margin: 0;
+            padding: .5em;
+
+            &-day {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 54px;
+                font-weight: bold;
+            }
+        }
+
+        &--body {
+            display: flex;
+            margin: 0;
+            padding: 0 .5em 0 .5em;
+        }
+
+        &--footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            color: #4691f6;
+            border-top: 1px solid #eeeeee;
+            box-sizing: border-box;
+
+            &-date {
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+
