@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
         <Layout>
-          <Datepicker />
+          <Datepicker value={new Date()} />
         </Layout>
     );
   }
