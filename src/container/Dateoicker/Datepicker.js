@@ -6,8 +6,8 @@ import './Datepicker.scss'
 class Datepicker extends Component {
     state = {
         value: this.props.value,
-        isSelectorActive: false
-    }
+        isOpen: false
+    };
 
     onChangeDate = (oldDate, newDate) => {
         this.setState({
@@ -15,35 +15,37 @@ class Datepicker extends Component {
         });
     };
 
-    onChangeShowSelector = value => {
+    onChangeShowSelector = (value) => {
         this.setState({
-            isSelectorActive: value
-        })
-    }
+            isOpen: value
+        });
+    };
 
     toggleSelector = () => {
-        this.onChangeShowSelector(!this.state.isSelectorActive)
-    }
+        this.onChangeShowSelector(!this.state.isOpen);
+    };
 
     showSelector = () => {
-        this.onChangeShowSelector(true)
-    }
+        if (this.onChangeShowSelector(true)) {
+            this.props.classList.remove('active')
+        }
+    };
 
     hideSelector = () => {
-        this.onChangeShowSelector(false)
-    }
+        this.onChangeShowSelector(false);
+    };
 
     render() {
-        let {value, isSelectorActive} = this.state
-        let {onChangeDate, showSelector, hideSelector, toggleSelector} = this
-        let childProps = {value, isSelectorActive, onChangeDate, showSelector, hideSelector, toggleSelector}
+        let { value, isOpen } = this.state;
+        let { onChangeDate, showSelector, hideSelector, toggleSelector } = this;
+        let childProps = { value, isOpen, onChangeDate, showSelector, hideSelector, toggleSelector };
 
-        return(
-            <div className="datepicker">
-                <DatepickerLabel {...childProps}/>
-                <DatepickerSelector {...childProps}/>
+        return (
+            <div className='datepicker'>
+                <DatepickerLabel { ...childProps } />
+                <DatepickerSelector { ...childProps } />
             </div>
-        )
+        );
     }
 }
 

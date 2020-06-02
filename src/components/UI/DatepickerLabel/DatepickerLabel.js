@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import moment from 'moment/moment'
-import './DatepickerLable..scss'
+import './DatepickerLable.scss'
 
 class DatepickerLabel extends Component {
     render() {

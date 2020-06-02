@@ -19,10 +19,10 @@ class DatepickerSelector extends Component {
         })
     }
 
-    clickDay = evt => {
+    clickDay = (e) => {
         let oldDate = this.state.tempValue;
-        let dataDate = evt.currentTarget.getAttribute('data-day');
-        let dataMonth = evt.currentTarget.getAttribute('data-month');
+        let dataDate = e.currentTarget.getAttribute('data-day');
+        let dataMonth = e.currentTarget.getAttribute('data-month');
         let newDate = moment(oldDate).month(dataMonth).date(dataDate).toDate();
 
         this.setState({
@@ -34,16 +34,17 @@ class DatepickerSelector extends Component {
 
         if (this.props.hideSelector)
             this.props.hideSelector();
-    }
+    };
 
     renderDaysInMonth() {
         let { value } = this.props
         let selectedDate = moment(value)
         let selectedTempDate = moment(this.state.tempValue)
+        let currentTempDate = moment(this.state.tempValue)
         let daysInMonth = moment(this.state.tempValue).daysInMonth()
         let startDate = moment(this.state.tempValue).date(1)
 
-        if (startDate.days() != 0)
+        if (startDate.days() !== 0)
             startDate.subtract(startDate.days(), 'days')
 
         let rows = []
@@ -54,11 +55,17 @@ class DatepickerSelector extends Component {
 
             for (let i = 0; i < 7; i++) {
                 let className = 'datepicker-selector__table-days'
-
+                /* проверяем условием если selectedTempDate.month() не равняется startDate.month()
+                * тогда классу datepicker-selector__table-days добавляем модуль --not
+                * но если startDate.date() равняется selectedDate.date() и startDate.month() равняется selectedDate.month()
+                * к классу datepicker-selector__table-days модуль --selected
+                **/
                 if (selectedTempDate.month() !== startDate.month()) {
-                    className += 'not';
+                    className += '--not'
                 } else if (startDate.date() === selectedDate.date() && startDate.month() === selectedDate.month()) {
-                    className += 'selected'
+                    className += '--selected'
+                } else if (currentTempDate.month() !== startDate.month()) {
+                    className += '--currant'
                 }
 
                 row.push(
@@ -86,35 +93,39 @@ class DatepickerSelector extends Component {
                 <tr
                     className='datepicker-selector__table--body'
                     key={index}>
-                    {row.map((item) => {
-                        return item;
-                    })}
+                    {row.map((item) => item)}
                 </tr>
             )
         })
     }
 
     render() {
+        let className = 'datepicker-selector'
+
+        if (this.props.isOpen) {
+            className += '--active'
+        }
+
         return (
-            <div className='datepicker-selector active'>
+            <div className={className}>
                 <table className='datepicker-selector__table'>
                     <tbody className='datepicker-selector__table--wrapper'>
                         <tr className='datepicker-selector__table--handler'>
                             <td className='datepicker-selector__table--handler-currant' colSpan='5'>
                                 {moment(this.state.tempValue).format('MMMM YYYY')}
                             </td>
-                            <tr className='datepicker-selector__table--handler-arrow'>
-                                <td
+                            <td className='datepicker-selector__table--handler-arrow'>
+                                <i
                                     className='datepicker-selector__table--handler-arrow-pr'
                                     onClick={this.clickPreviousMonth}
                                 >
-                                </td>
-                                <td
+                                </i>
+                                <i
                                     className='datepicker-selector__table--handler-arrow-nxt'
                                     onClick={this.clickNextMonth}
                                 >
-                                </td>
-                            </tr>
+                                </i>
+                            </td>
                         </tr>
                         <tr className='datepicker-selector__table--week'>
                             <td className='datepicker-selector__table--week-day'>Mo</td>
@@ -128,7 +139,7 @@ class DatepickerSelector extends Component {
                         {this.renderDaysInMonth()}
                         <tr className='datepicker-selector__table--footer'>
                             <td className='datepicker-selector__table--footer-date'>
-                                {moment(this.state.tempValue).format('DD/MM/YYYY')}
+                                { moment(this.state.tempValue).format('DD/MM/YYYY') }
                             </td>
                         </tr>
                     </tbody>
