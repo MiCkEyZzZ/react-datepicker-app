@@ -6,10 +6,21 @@
     border-radius: 5px;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
     box-sizing: border-box;
+    overflow: hidden;
 
-    &.active {
+    moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    &--active {
         display: block;
-
+        margin-top: 1em;
+        padding: 0;
+        border: 2px solid #cccccc;
+        border-radius: 5px;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     &__table {
@@ -17,12 +28,7 @@
         padding: 0;
         border-collapse: collapse;
         box-sizing: border-box;
-
-        tr {
-            display: flex;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
+        overflow: hidden;
 
         td {
             padding: 1em;
@@ -40,12 +46,12 @@
                 background: lighten(#4691f6, 4%);
             }
 
-            &, &not {
+            &, &--not {
                 width: 54px;
                 cursor: pointer;
             }
 
-            &not {
+            &--not {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -58,7 +64,7 @@
                 }
             }
 
-            &selected {
+            &--selected {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -67,6 +73,11 @@
                 border-left: 0;
                 border-radius: 50%;
                 cursor: default;
+            }
+
+            &--currant {
+                color: orangered;
+                background: #000000;
             }
         }
 
@@ -92,6 +103,8 @@
             }
 
             &-arrow {
+                display: flex;
+                justify-content: space-between;
                 width: 95px;
                 margin: 0;
                 padding: 0;
@@ -105,10 +118,20 @@
                     cursor: pointer;
                 }
 
+                &-pr {
+                    text-align: left;
+                    margin-right: 8px;
+                }
+
+                &-nxt {
+                    text-align: right;
+                    margin-left: 8px;
+                }
+
                 &-pr::before {
                     position: absolute;
-                    top: 15px;
-                    left: 12px;
+                    top: -3px;
+                    left: 2px;
                     content: '';
                     width: 15px;
                     height: 15px;
@@ -125,8 +148,8 @@
 
                 &-nxt::before {
                     position: absolute;
-                    top: 25px;
-                    left: 12px;
+                    top: 7px;
+                    left: 3px;
                     content: '';
                     width: 15px;
                     height: 15px;
