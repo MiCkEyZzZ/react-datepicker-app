@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import moment from 'moment/moment'
 import './DatepickerSelector.scss'
+import Backselector from "../Backdrop/Backselector"
 
 class DatepickerSelector extends Component {
     state = {
@@ -20,27 +21,30 @@ class DatepickerSelector extends Component {
     }
 
     clickDay = (e) => {
-        let oldDate = this.state.tempValue;
-        let dataDate = e.currentTarget.getAttribute('data-day');
-        let dataMonth = e.currentTarget.getAttribute('data-month');
-        let newDate = moment(oldDate).month(dataMonth).date(dataDate).toDate();
+        let oldDate = this.state.tempValue
+        let dataDate = e.currentTarget.getAttribute('data-day')
+        let dataMonth = e.currentTarget.getAttribute('data-month')
+        let newDate = moment(oldDate).month(dataMonth).date(dataDate).toDate()
 
         this.setState({
             tempValue: newDate
         });
 
         if (this.props.onChangeDate)
-            this.props.onChangeDate(oldDate, newDate);
+            this.props.onChangeDate(oldDate, newDate)
 
-        if (this.props.hideSelector)
-            this.props.hideSelector();
-    };
+        /*
+        * close selectorModal after selected date
+        * */
+
+        // if (this.props.hideSelector)
+        //     this.props.hideSelector()
+    }
 
     renderDaysInMonth() {
         let { value } = this.props
         let selectedDate = moment(value)
         let selectedTempDate = moment(this.state.tempValue)
-        let currentTempDate = moment(this.state.tempValue)
         let daysInMonth = moment(this.state.tempValue).daysInMonth()
         let startDate = moment(this.state.tempValue).date(1)
 
@@ -55,17 +59,11 @@ class DatepickerSelector extends Component {
 
             for (let i = 0; i < 7; i++) {
                 let className = 'datepicker-selector__table-days'
-                /* проверяем условием если selectedTempDate.month() не равняется startDate.month()
-                * тогда классу datepicker-selector__table-days добавляем модуль --not
-                * но если startDate.date() равняется selectedDate.date() и startDate.month() равняется selectedDate.month()
-                * к классу datepicker-selector__table-days модуль --selected
-                **/
+
                 if (selectedTempDate.month() !== startDate.month()) {
                     className += '--not'
                 } else if (startDate.date() === selectedDate.date() && startDate.month() === selectedDate.month()) {
                     className += '--selected'
-                } else if (currentTempDate.month() !== startDate.month()) {
-                    className += '--currant'
                 }
 
                 row.push(
@@ -107,6 +105,7 @@ class DatepickerSelector extends Component {
         }
 
         return (
+            <React.Fragment>
             <div className={className}>
                 <table className='datepicker-selector__table'>
                     <tbody className='datepicker-selector__table--wrapper'>
@@ -145,6 +144,9 @@ class DatepickerSelector extends Component {
                     </tbody>
                 </table>
             </div>
+
+            { this.props.isOpen ?  <Backselector onClick={this.props.hideSelector} /> : null }
+            </React.Fragment>
         )
     }
 }
