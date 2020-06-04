@@ -1,0 +1,32 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  padding-top: 100px;
+
+  &-page {
+    margin: 0 0 0 250px;
+    padding: 0;
+  }
+
+  &-list__items {
+    margin: 50px 0 0 250px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-list__item {
+    margin-bottom: 10px;
+
+    &-link {
+      font-size: 18px;
+      text-decoration: none;
+      color: #000000;
+
+      &:hover {
+        color: #4691f6;
+      }
+    }
+  }
+}

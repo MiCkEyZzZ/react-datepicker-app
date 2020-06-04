@@ -2,6 +2,7 @@
   "name": "react-datepicker",
   "version": "0.1.0",
   "private": true,
+  "author": "Mikhail<zedmfix@gmail.com>Zhuravlev",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",

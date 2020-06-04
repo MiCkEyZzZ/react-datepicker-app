@@ -1,0 +1,46 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 300px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  background: #ffffff;
+  transform: translateX(0px);
+  transition: transform .22s ease-in;
+  z-index: 90;
+
+  &.close {
+    transform: translateX(-300px);
+  }
+
+  &-list__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-list__item {
+    margin-bottom: 15px;
+
+    &-link {
+      position: relative;
+      font-size: 30px;
+      text-decoration: none;
+      padding: 0 20px 10px 20px;
+      color: #333d54;
+      background-color: #ffffff;
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+}
+
+.active {
+  opacity: .7;
+}
