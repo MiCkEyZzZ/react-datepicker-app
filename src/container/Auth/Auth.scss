@@ -1,0 +1,11 @@
+.auth {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  padding-top: 100px;
+
+  &-title {
+    margin: 0 0 0 250px;
+    padding: 0;
+  }
+}
