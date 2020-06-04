@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import moment from 'moment/moment'
 import './DatepickerSelector.scss'
-import Backselector from "../Backdrop/Backselector"
+import Backselector from "../Backselector/Backselector"
 
 class DatepickerSelector extends Component {
     state = {
